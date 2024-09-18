@@ -1,4 +1,4 @@
-import { PlusSquare } from 'lucide-react'
+import { LoaderCircle, PlusSquare } from 'lucide-react'
 import React, { useState } from 'react'
 import {
     Dialog,
@@ -13,16 +13,41 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from "@/components/ui/input"
 import { uid } from 'uid';
+import globalApi from '../../../service/globalApi';
+import { data } from 'autoprefixer';
+import { useUser } from '@clerk/clerk-react';
 
 const AddResume = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [resumeTitle, setResumeTitle] = useState();
+    const { user } = useUser();
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const onCreate = () => {
+        setIsLoading(true);
         const resumeId = uid(16);
-        console.log(resumeTitle, resumeId);
         setIsDialogOpen(false);
         setResumeTitle('');
+
+        const data = {
+            data: {
+                title: resumeTitle,
+                resumeId: resumeId,
+                userEmail: user?.primaryEmailAddress?.emailAddress,
+                userName: user?.fullName
+            }
+        }
+
+        globalApi.CreateNewResume(data).then(res => {
+            console.log("response", res);
+            if (res) {
+                setIsLoading(false);
+            }
+        }, (error) => {
+            console.log("RESPONSE ERROR", error);
+            setIsLoading(false);
+        })
     }
 
     return (
@@ -47,9 +72,10 @@ const AddResume = () => {
                                     Cancel
                                 </Button>
                             </DialogClose>
-                            <Button disabled={!resumeTitle} onClick={() => onCreate()} >
-                                Create Resume
+                            <Button disabled={!resumeTitle || isLoading} onClick={() => onCreate()}>
+                                {isLoading ? <LoaderCircle className='animate-spin' /> : "Create Resume"}
                             </Button>
+
                         </DialogFooter>
                     </DialogHeader>
                 </DialogContent>
