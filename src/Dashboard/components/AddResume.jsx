@@ -16,45 +16,51 @@ import { uid } from 'uid';
 import globalApi from '../../../service/globalApi';
 import { data } from 'autoprefixer';
 import { useUser } from '@clerk/clerk-react';
+import { useNavigate } from 'react-router-dom';
 
 const AddResume = () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [resumeTitle, setResumeTitle] = useState();
     const { user } = useUser();
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
+    const onCreate = async () => {
+        try {
+            setIsLoading(true);
+            const resumeId = uid(16);
+            setIsDialogOpen(false);
+            setResumeTitle('');
 
-    const onCreate = () => {
-        setIsLoading(true);
-        const resumeId = uid(16);
-        setIsDialogOpen(false);
-        setResumeTitle('');
+            const data = {
+                data: {
+                    title: resumeTitle,
+                    resumeId: resumeId,
+                    userEmail: user?.primaryEmailAddress?.emailAddress,
+                    userName: user?.fullName
+                }
+            };
 
-        const data = {
-            data: {
-                title: resumeTitle,
-                resumeId: resumeId,
-                userEmail: user?.primaryEmailAddress?.emailAddress,
-                userName: user?.fullName
-            }
-        }
+            const res = await globalApi.CreateNewResume(data);
 
-        globalApi.CreateNewResume(data).then(res => {
-            console.log("response", res);
             if (res) {
                 setIsLoading(false);
+                navigate(`/dashboard/resume/${res.data.data.documentId}/edit`)
             }
-        }, (error) => {
-            console.log("RESPONSE ERROR", error);
+
+        } catch (error) {
+            console.log("Failed to create resume : ", error);
             setIsLoading(false);
-        })
-    }
+
+        }
+    };
+
 
     return (
         <div>
             <Dialog>
                 <DialogTrigger asChild>
-                    <div className='w-[12vw] h-[28vh] cursor-pointer border mt-10 flex items-center justify-center bg-secondary rounded-lg  transition-transform duration-300 ease-in-out transform hover:scale-105 group shadow-lg hover:shadow-xl' >
+                    <div className='w-[240px] h-[280px] cursor-pointer border mt-10 flex items-center justify-center bg-secondary rounded-lg  transition-transform duration-300 ease-in-out transform hover:scale-105 group shadow-lg hover:shadow-xl' >
                         <PlusSquare className='transition-transform duration-300 ease-in-out transform group-hover:scale-110' size={30} />
                     </div>
                 </DialogTrigger>
