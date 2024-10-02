@@ -17,7 +17,8 @@ export default {
             company: 'Brainwave Matrix Solutions',
             location: 'Remote',
             startDate: 'Jul 2024',
-            endDate: 'Current',
+            endDate: '',
+            currentlyWorking: true,
             description: [
                 'Gaining valuable hands-on experience in full-stack web development.',
                 'Applying technical skills in the development and implementation of dynamic web applications.'
@@ -29,7 +30,8 @@ export default {
             company: 'Self-Employed Tutor',
             location: 'Remote',
             startDate: 'Jun 2023',
-            endDate: 'Current',
+            endDate: '',
+            currentlyWorking: true,
             description: [
                 'Taught Python and R to 11th-grade students, focusing on fundamental concepts and practical applications.',
                 'Increased student test scores by an average of 85% through personalized instruction and practical coding exercises.',
@@ -43,6 +45,7 @@ export default {
             location: 'Remote',
             startDate: 'Jan 2023',
             endDate: 'Jun 2023',
+            currentlyWorking: false,
             description: [
                 'Delivered 150+ remote Python sessions, teaching basic and advanced concepts.',
                 'Facilitated remote coding workshops, monitored student performance, and provided targeted feedback.',
@@ -53,17 +56,19 @@ export default {
     education: [
         {
             id: 1,
-            universityName: 'Indira Gandhi National Open University, Delhi',
+            instituteName: 'Indira Gandhi National Open University, Delhi',
             startDate: 'Jan 2021',
-            endDate: 'Jan 2024',
+            endDate: 'June 2024',
+            currentlyPursuing: false,
             degree: 'Bachelor of Computer Application (BCA)',
             description: 'Focused on computer science fundamentals, web development, and programming languages.'
         },
         {
             id: 2,
-            schoolName: 'School Of Excellence Khichripur | CBSE, Delhi',
+            instituteName: 'School Of Excellence Khichripur | CBSE, Delhi',
             startDate: 'Apr 2019',
             endDate: 'Mar 2020',
+            currentlyPursuing: false,
             degree: '12th Board',
             description: 'Completed higher secondary education with a focus on science and technology.'
         }
@@ -137,7 +142,8 @@ export default {
             name: 'IBlogIt - Blog Website',
             stack: 'MERN stack | Redux Toolkit | JWT | Flowbite React',
             startDate: 'May 2024',
-            endDate: 'Ongoing',
+            endDate: '',
+            onGoing: true,
             description: [
                 'Developed a full-featured blog website for creating, reading, updating, and deleting posts.',
                 'Built responsive front-end with React.js and managed state using Redux Toolkit.',
@@ -152,6 +158,7 @@ export default {
             stack: 'MERN stack | Redux Toolkit | JWT',
             startDate: 'Jan 2024',
             endDate: 'Apr 2024',
+            onGoing: false,
             description: [
                 'Developed an e-commerce platform using MERN stack with Redux Toolkit and JWT for user authentication.',
                 'Designed MongoDB database, built backend RESTful APIs, and created dynamic frontend for seamless user experience.',
@@ -167,6 +174,7 @@ export default {
             stack: 'React.js | GSAP | Three.js | Tailwind CSS',
             startDate: 'Jun 2024',
             endDate: 'Jul 2024',
+            onGoing: false,
             description: 'Developed a fully responsive and interactive clone of the Apple website.',
             github: 'GitHub Repository URL'
         },
@@ -176,6 +184,7 @@ export default {
             stack: 'HTML | CSS | JavaScript',
             startDate: 'Jul 2024',
             endDate: 'Jul 2024',
+            onGoing: false,
             description: 'Developed a clone of QuillBot with a focus on frontend functionalities.',
             github: 'GitHub Repository URL'
         }
