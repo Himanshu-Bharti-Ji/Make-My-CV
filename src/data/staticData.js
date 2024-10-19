@@ -3,7 +3,7 @@ export default {
     lastName: 'Bharti',
     jobTitle: 'Full Stack Developer',
     address: 'F - 110 Kondli Delhi',
-    phone: '+91-8447767283',
+    phone: '08447767283',
     email: 'himanshubhartimax@gmail.com',
     portfolio: 'portfolio URL',
     linkedin: 'linkedin.com URL',

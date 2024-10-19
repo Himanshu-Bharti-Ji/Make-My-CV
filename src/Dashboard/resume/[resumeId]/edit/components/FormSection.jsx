@@ -36,8 +36,11 @@ const FormSection = () => {
             </div>
 
             {/* Personal Detail */}
-            {activeFormIndex === 1 ? <PersonalDetails enableNext={(v) => setEnableNext(v)} /> : activeFormIndex === 2 ? <Summary /> : null}
-
+            {activeFormIndex === 1 ? (
+                <PersonalDetails enableNext={(v) => setEnableNext(v)} />
+            ) : activeFormIndex === 2 ? (
+                <Summary enableNext={(v) => setEnableNext(v)} />
+            ) : null}
 
             {/* Summary */}
 

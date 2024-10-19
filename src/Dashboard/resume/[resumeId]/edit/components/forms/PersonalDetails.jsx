@@ -69,7 +69,6 @@ const PersonalDetails = ({ enableNext }) => {
                         <label className="text-sm">First Name</label>
                         <Input
                             name="firstName"
-                            type="text"
                             required
                             defaultValue={resumeInfo?.firstName}
                             onChange={handleInputChange}
@@ -79,7 +78,6 @@ const PersonalDetails = ({ enableNext }) => {
                         <label className="text-sm">Last Name</label>
                         <Input
                             name="lastName"
-                            type="text"
                             required
                             defaultValue={resumeInfo?.lastName}
                             onChange={handleInputChange}
@@ -89,7 +87,6 @@ const PersonalDetails = ({ enableNext }) => {
                         <label className="text-sm">Phone</label>
                         <Input
                             name="phone"
-                            type="text"
                             required
                             defaultValue={resumeInfo?.phone}
                             onChange={handleInputChange}
@@ -99,7 +96,6 @@ const PersonalDetails = ({ enableNext }) => {
                         <label className="text-sm">Email</label>
                         <Input
                             name="email"
-                            type="email"
                             required
                             defaultValue={resumeInfo?.email}
                             onChange={handleInputChange}
@@ -109,7 +105,6 @@ const PersonalDetails = ({ enableNext }) => {
                         <label className="text-sm">Job Title</label>
                         <Input
                             name="jobTitle"
-                            type="text"
                             required
                             defaultValue={resumeInfo?.jobTitle}
                             onChange={handleInputChange}
@@ -119,7 +114,6 @@ const PersonalDetails = ({ enableNext }) => {
                         <label className="text-sm">Address</label>
                         <Input
                             name="address"
-                            type="text"
                             required
                             defaultValue={resumeInfo?.address}
                             onChange={handleInputChange}
